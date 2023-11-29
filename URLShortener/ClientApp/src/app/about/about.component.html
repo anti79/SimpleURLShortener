@@ -1,0 +1,11 @@
+<h1>ඞ SUS: Simple URL Shortener</h1>
+<p>
+	The URL shortening algorithm is based on the Base62 respresentation of the URL's Id in the database.
+	Why Base62? Because the combined number of all lowercase letters, all capital case letters, and all numbers is 62:
+</p>
+<p style="font-weight:bold;">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+<p>
+	The first 62 links generated are 1 character long: <a href="http://sus.url/5">http://sus.url/5</a>.
+	Then the next 3844 (62*62) are two characters long, and so forth.
+	An URL of length 7, will give 62⁷ = ~3500 Billion URLs, which should be more than enough.
+</p>

@@ -1,0 +1,21 @@
+<app-home></app-home>
+<br/>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Long URL</th>
+			<th scope="col">Shortened URL</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let urlrecord of records">
+			<th scope="row">{{urlrecord.urlRecordId}}</th>
+			<td>{{urlrecord.originalURL}}</td>
+			<td><a target="_blank" href="{{baseURL}}/{{urlrecord.shortenedURL}}">{{baseURL}}/{{urlrecord.shortenedURL}}</a></td>
+
+		</tr>
+
+	</tbody>
+</table>
