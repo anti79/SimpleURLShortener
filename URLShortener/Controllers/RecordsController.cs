@@ -11,19 +11,19 @@ namespace URLShortener.Controllers
 	{
 		// GET: api/<RecordsController>
 		[HttpGet]
-		public GetRecordsResponse GetMultiple(int count)
+		public GetRecordsResponse GetMultiple(int count, int offset=0)
 		{
 
 			using (var db = new ShortenerDBContext())
 			{
-				var records = db.Records.OrderByDescending(r => r.URLRecordId).Take(count);
+				var records = db.Records.OrderByDescending(r => r.URLRecordId).Skip(offset).Take(count);
 				if (records.Any() == false)
 				{
-					return new GetRecordsResponse() { Records = new List<URLRecord>(), Status = Status.success };
+					return new GetRecordsResponse() { Records = new List<URLRecord>(), Status = Status.success, Total=0 };
 				}
 				else
 				{
-					return new GetRecordsResponse() { Records = records.ToList(), Status = Status.success };
+					return new GetRecordsResponse() { Records = records.ToList(), Status = Status.success, Total=db.Records.Count() };
 				}
 			}
 			
@@ -31,9 +31,22 @@ namespace URLShortener.Controllers
 
 		// GET api/<RecordsController>/5
 		[HttpGet("{id}")]
-		public string Get(int id)
+		public URLRecord Get(int id)
 		{
-			return "value";
+			using (var db = new ShortenerDBContext())
+			{
+				var record = db.Records.Where(r => r.URLRecordId == id).FirstOrDefault();
+				if(record!=null)
+				{
+					return record;
+
+				}
+				else
+				{
+					Response.StatusCode = 404;
+					return null;
+				}
+			}
 		}
 
 		// POST api/<RecordsController>

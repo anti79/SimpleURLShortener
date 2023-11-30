@@ -1,30 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
+import { AddURLComponent } from './add-url/add-url.component';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { URLTableComponent } from './urltable/urltable.component';
+import { LoginComponent } from './login/login.component';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
+    AddURLComponent,
     URLTableComponent,
     NotFoundComponent,
     AboutComponent,
-    URLTableComponent
+    URLTableComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,10 +31,11 @@ import { URLTableComponent } from './urltable/urltable.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FormsModule,
+    CookieModule.withOptions(),
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: URLTableComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'urls', component: URLTableComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'not_found', component: NotFoundComponent },
       { path: 'about', component: AboutComponent },
     ])

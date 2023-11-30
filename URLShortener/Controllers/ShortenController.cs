@@ -41,6 +41,7 @@ namespace URLShortener.Controllers
 			}
 			catch(Exception ex)
 			{
+				Response.StatusCode = 400;
 				return new ShortenResponse() { Status = Status.error, Error=ex.Message };
 			}
 		}

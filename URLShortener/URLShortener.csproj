@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.15" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,13 +26,17 @@
   <ItemGroup>
     <None Remove="ClientApp\src\models\recordsresponse.ts" />
     <None Remove="ClientApp\src\models\requestresponse.ts" />
+    <None Remove="ClientApp\src\models\shortenresponse.ts" />
     <None Remove="ClientApp\src\models\urlrecord.ts" />
+    <None Remove="ClientApp\src\models\user.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\models\recordsresponse.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\requestresponse.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\shortenresponse.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\urlrecord.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\user.ts" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

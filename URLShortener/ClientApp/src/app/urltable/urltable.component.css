@@ -1,0 +1,7 @@
+.btn-load {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: end;
+  gap: 5px;
+}

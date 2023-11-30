@@ -8,7 +8,7 @@ namespace URLShortener.Services
 		{
 		
 			url = url.ToLower();
-			string urlPattern = @"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$";
+			Regex urlPattern = new Regex("^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$");
 			if (!url.StartsWith("http://") && !url.StartsWith("https://"))
 				{
 					url = "https://" + url;
@@ -19,7 +19,7 @@ namespace URLShortener.Services
 			url = new Uri(url).AbsoluteUri;
 
 
-			if(!Regex.IsMatch(url, urlPattern, RegexOptions.IgnoreCase))
+			if(!urlPattern.IsMatch(url))
 			{
 				throw new UriFormatException("Invalid URL");
 			}

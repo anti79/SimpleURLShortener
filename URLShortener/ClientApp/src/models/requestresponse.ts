@@ -1,5 +1,3 @@
-import { URLRecord } from "./urlrecord";
-
 type Status = "success" | "error";
 
 export class RequestResponse {
@@ -7,8 +5,3 @@ export class RequestResponse {
   error: string | null = null;
 }
 
-export class ShortenRequestResponse extends RequestResponse
-{
-  result: URLRecord | null = null;
-  alreadyExists: boolean | null = null;
-}

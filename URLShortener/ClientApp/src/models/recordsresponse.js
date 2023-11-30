@@ -20,6 +20,7 @@ var RecordsResponse = /** @class */ (function (_super) {
     function RecordsResponse() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.records = [];
+        _this.total = 0;
         return _this;
     }
     return RecordsResponse;

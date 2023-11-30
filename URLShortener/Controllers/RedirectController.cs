@@ -4,7 +4,7 @@ namespace URLShortener.Controllers
 {
 	public class RedirectController : Controller
 	{
-		String[] angularRoutes = new String[] { "urls", "about" };
+		String[] angularRoutes = new String[] { "login", "about" };
 
 		[HttpGet]
 		public IActionResult Get()

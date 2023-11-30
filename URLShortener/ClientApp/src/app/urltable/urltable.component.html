@@ -1,9 +1,10 @@
-<app-home></app-home>
+<app-add-url *ngIf="authService.getToken()" (onAdded)="load()"></app-add-url>
+<p *ngIf="!authService.getToken()">Log in to be able to shorten links	.</p>
 <br/>
 <table class="table">
 	<thead>
 		<tr>
-			<th scope="col">#</th>
+			<!--<th scope="col">#</th>-->
 			<th scope="col">Long URL</th>
 			<th scope="col">Shortened URL</th>
 
@@ -11,7 +12,7 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let urlrecord of records">
-			<th scope="row">{{urlrecord.urlRecordId}}</th>
+			<!--<th scope="row">{{urlrecord.urlRecordId}}</th>-->
 			<td>{{urlrecord.originalURL}}</td>
 			<td><a target="_blank" href="{{baseURL}}/{{urlrecord.shortenedURL}}">{{baseURL}}/{{urlrecord.shortenedURL}}</a></td>
 
@@ -19,3 +20,4 @@
 
 	</tbody>
 </table>
+<button class="btn btn-outline-primary btn-load" *ngIf="isThereMoreToLoad()" (click)="loadMore()"><i class="fa-solid fa-caret-down"></i> Load more</button>

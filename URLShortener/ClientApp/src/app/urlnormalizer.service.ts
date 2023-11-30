@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class URLNormalizerService {
 
-  urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
+  urlPattern = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
   public normalize(url: string): string {
 
     url = url.toLowerCase();
